@@ -7,7 +7,7 @@
 </div>
 
 <div class="container-sm mt-5" style="width: 804px;">
-  <form action="/" method="post" class="card">
+  <form action="/pwgen" method="post" class="card">
     <div class="card-header fs-3 fw-bold">
       Random Password Generator
     </div>
@@ -17,7 +17,7 @@
           <label for="pw-length">Password Length:</label>
         </div>
         <div class="col-6 col-sm-8" style="padding-left: 0px;">
-          <input type="number" name="pw-length" id="pw-length" placeholder="Length is available between 4 ~ 16" min="4" max="12" style="width: 100%;" required>
+          <input type="number" name="pw-length" value="{{pwLength}}" id="pw-length" placeholder="Length is available between 4 ~ 16" min="4" max="12" style="width: 100%;" required>
         </div>
       </div>
       <div class="row mb-4">
@@ -25,7 +25,7 @@
           <p>Include Lowercase Characters:</p>
         </div>
         <div class="form-check col-6 col-sm-8">
-          <input class="form-check-input" type="checkbox" name="pw-in-low" value="" id="pw-in-low">
+          <input class="form-check-input" type="checkbox" name="pw-in-low" value="checked" id="pw-in-low" {{pwInLow}}>
           <label class="form-check-label" for="pw-in-low">
             (e.g. abcdefg)
           </label>
@@ -36,7 +36,7 @@
           <p>Include Uppercase Characters:</p>
         </div>
         <div class="form-check col-6 col-sm-8">
-          <input class="form-check-input" type="checkbox" name="pw-in-upper" value="" id="pw-in-upper">
+          <input class="form-check-input" type="checkbox" name="pw-in-upper" value="checked" id="pw-in-upper" {{pwInUpper}}>
           <label class="form-check-label" for="pw-in-upper">
             (e.g. ABCDEFG)
           </label>
@@ -47,7 +47,7 @@
           <p>Include Numbers:</p>
         </div>
         <div class="form-check col-6 col-sm-8">
-          <input class="form-check-input" type="checkbox" name="pw-in-num" value="" id="pw-in-num">
+          <input class="form-check-input" type="checkbox" name="pw-in-num" value="checked" id="pw-in-num"  {{pwInNum}}>
           <label class="form-check-label" for="pw-in-num">
             (e.g. 123456)
           </label>
@@ -58,7 +58,7 @@
           <p>Include Symbols:</p>
         </div>
         <div class="form-check col-6 col-sm-8">
-          <input class="form-check-input" type="checkbox" name="pw-in-sym" value="" id="pw-in-sym">
+          <input class="form-check-input" type="checkbox" name="pw-in-sym" value="checked" id="pw-in-sym" {{pwInSym}}>
           <label class="form-check-label" for="pw-in-sym">
             (e.g. @#$%)
           </label>
@@ -69,13 +69,13 @@
           <label for="pw-exclude-char">Exclude Characters:</label>
         </div>
         <div class="col-6 col-sm-8" style="padding-left: 0px;">
-          <input type="text" name="pw-length" id="pw-exclude-char" placeholder="These characters will not appear in the password" min="4"
+          <input type="text" name="pw-exclude-char" value="{{pwExcludeChar}}" id="pw-exclude-char" placeholder="These characters will not appear in the password" min="4"
             max="12" style="width: 100%;"
             >
         </div>
       </div>
       <div class="alert alert-info" role="alert">
-        Your password is:
+        Your password is: {{pwResult}}
       </div>
       <button type="submit" class="btn btn-success">Generate Password</button>
     </div>
