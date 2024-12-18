@@ -29,7 +29,10 @@ class passwordGenerator {
     if (data.pwExcludeChar) {
       const newPwExcludeChar = [...new Set(data.pwExcludeChar.split(''))]; //移除重複字元
       chars = chars.filter(char => !newPwExcludeChar.includes(char));
-      if (chars.length === 0) return "no characters available"   //如果全部字元除外
+      if (chars.length === 0) {
+        data.resultVisible = 'alert-danger'
+        return ''  //如果全部字元除外
+      }
     }
     let password = '';
     for (let i = 0; i < Number(data.pwLength); i++){

@@ -1,0 +1,16 @@
+body {
+  background-color: #5B5B5B;
+}
+
+.pw-result-text {
+  color: #006600;
+}
+
+.pw-wrong-text {
+  color: #750000;
+}
+
+.pw-length-wrong {
+  border: solid 2px #FF7575;
+  outline: none;
+}
