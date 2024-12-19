@@ -42,4 +42,4 @@ npm run start
 
 ## 參考畫面
 
-![畫面](.public/images/sample.png)
+![畫面](./public/images/sample.png)
