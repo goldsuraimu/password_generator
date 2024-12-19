@@ -30,9 +30,7 @@ app.listen(port, () => {
   console.log(`this is running at http://localhost:${port}`)
 })
 
-
 // function
-
 
 function dataProcesssing (body) {
   const data = {
@@ -43,9 +41,9 @@ function dataProcesssing (body) {
     pwInSym: body['pw-in-sym'] ?? '',
     pwExcludeChar: body['pw-exclude-char'] ?? '',
     pwBdColor: '',
-    resultVisible: 'd-none',
-    resultTextColor: 'pw-result-text',
-    pwResult: ''
+    resultVisible: 'd-none', // 顯示密碼欄位，並根據是否為密碼顯示對應顏色
+    resultTextColor: 'pw-result-text', // 對應密碼欄位顯示對應文字顏色
+    pwResult: '' // 顯示密碼，如有錯誤根據錯誤內容提示
   }
   if (!pwLengthRange(data)) {
     data.pwBdColor = 'pw-length-wrong'
@@ -54,7 +52,7 @@ function dataProcesssing (body) {
     data.pwResult = 'Length is available between 4 ~ 16'
     return data
   }
-
+  // 判斷是否有勾選一個選項
   const isChecked = data.pwInLow || data.pwInUpper || data.pwInNum || data.pwInSym
   if (!isChecked) {
     data.resultVisible = 'alert-danger'
@@ -62,6 +60,7 @@ function dataProcesssing (body) {
     data.pwResult = 'you need to select at least one'
     return data
   }
+  // 判斷是否有正確產生密碼
   const pw = PwGentor.passwordGenerator(data)
   data.resultVisible = pw ? 'alert-info' : 'alert-danger'
   data.resultTextColor = pw ? 'pw-result-text' : 'pw-wrong-text'
@@ -69,7 +68,7 @@ function dataProcesssing (body) {
 
   return data
 }
-
+// 限制密碼長度範圍
 function pwLengthRange (data) {
   const length = Number(data.pwLength)
   const maxLength = 16
