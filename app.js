@@ -72,7 +72,7 @@ function dataProcesssing (body) {
 
 function pwLengthRange (data) {
   const length = Number(data.pwLength)
-  const maxLength = 12
+  const maxLength = 16
   const minLength = 4
   if (!(length <= maxLength && length >= minLength)) {
     return false
